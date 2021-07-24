@@ -40,7 +40,8 @@
             "endOfLine": "auto"
           }
         ],
-        "no-console": "off"
+        "no-console": "off",
+        "require-jsdoc": "off"
       }
     },
     {
