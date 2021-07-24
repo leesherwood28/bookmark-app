@@ -1,7 +1,12 @@
+@use '~@angular/material' as mat;
+
 :host {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 2rem;
   padding: 1rem;
+
+  color: white;
+  background-color: black;
 }
