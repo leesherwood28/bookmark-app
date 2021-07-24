@@ -1,3 +1,8 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use '/src/theme/dark-theme.scss';
+@use '/src/theme/light-theme.scss';
+
 .content {
   width: 100vw;
   height: 100vh;
@@ -11,9 +16,18 @@ main {
   overflow: auto;
   padding: 1rem;
   position: relative;
+
+  transition: background ease-in 250ms;
+  $background: map.get(dark-theme.$dark-theme, background);
+  background: mat.get-color-from-palette($background, background);
 }
 main > * {
   position: absolute;
   inset: 0;
   height: 2000px;
+}
+
+.light-theme main {
+  $background: map.get(light-theme.$light-theme, background);
+  background: mat.get-color-from-palette($background, background);
 }
