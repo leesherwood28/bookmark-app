@@ -1,11 +1,12 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
+  OnInit,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { markForCheck } from 'src/app/operators/mark-for-check.operator';
 import { ThemeService } from '../theme/theme.service';
 
@@ -15,6 +16,10 @@ import { ThemeService } from '../theme/theme.service';
   templateUrl: './theme-toggle.component.html',
   styleUrls: ['./theme-toggle.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    fadeInOnEnterAnimation({ duration: 500, delay: 200 }),
+    fadeOutOnLeaveAnimation({ duration: 200 }),
+  ],
 })
 /**
  * Component is used to toggle between light and dark theme

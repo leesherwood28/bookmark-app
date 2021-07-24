@@ -1,7 +1,11 @@
 <mat-slide-toggle [formControl]="themeControl" color="primary"> </mat-slide-toggle>
 <div class="theme-icon-container">
   <div class="theme-icon">
-    <mat-icon *ngIf="themeControl.value">dark_mode</mat-icon>
-    <mat-icon *ngIf="!themeControl.value">light_mode</mat-icon>
+    <mat-icon *ngIf="themeControl.value" @fadeInOnEnter @fadeOutOnLeave
+      >dark_mode</mat-icon
+    >
+    <mat-icon *ngIf="!themeControl.value" @fadeInOnEnter @fadeOutOnLeave
+      >light_mode</mat-icon
+    >
   </div>
 </div>
