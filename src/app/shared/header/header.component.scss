@@ -9,6 +9,12 @@
 
   color: white;
   background-color: black;
+  transition: background-color ease-in 250ms;
+}
+
+:host-context(.light-theme) {
+  color: black;
+  background-color: white;
 }
 
 .title {
