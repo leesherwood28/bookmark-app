@@ -7,4 +7,7 @@ const routes: Routes = [];
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+/**
+ * The main app routing module
+ */
 export class AppRoutingModule {}

@@ -11,4 +11,7 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent],
 })
+/**
+ * The main app module
+ */
 export class AppModule {}

@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+/**
+ * The main app component
+ */
 export class AppComponent {
   title = 'bookmark-app';
 }
