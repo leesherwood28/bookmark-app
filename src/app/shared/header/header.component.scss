@@ -13,7 +13,7 @@
   $primary: dark-theme.$dark-primary;
   color: mat.get-color-from-palette($primary, default-contrast);
   background: mat.get-color-from-palette($primary);
-  transition: background-color ease-in 250ms;
+  transition: background ease-in 250ms;
 }
 
 :host-context(.light-theme) {
