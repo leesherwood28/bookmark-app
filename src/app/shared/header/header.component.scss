@@ -1,4 +1,7 @@
 @use '~@angular/material' as mat;
+@use 'sass:map';
+@use '/src/theme/dark-theme.scss';
+@use '/src/theme/light-theme.scss';
 
 :host {
   display: flex;
@@ -7,14 +10,16 @@
   height: 2rem;
   padding: 1rem;
 
-  color: white;
-  background-color: black;
+  $primary: dark-theme.$dark-primary;
+  color: mat.get-color-from-palette($primary, default-contrast);
+  background: mat.get-color-from-palette($primary);
   transition: background-color ease-in 250ms;
 }
 
 :host-context(.light-theme) {
-  color: black;
-  background-color: white;
+  $primary: light-theme.$light-primary;
+  color: mat.get-color-from-palette($primary, default-contrast);
+  background: mat.get-color-from-palette($primary);
 }
 
 .title {
