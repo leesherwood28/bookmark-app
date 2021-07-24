@@ -1,6 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { markForCheck } from 'src/app/operators/mark-for-check.operator';
 import { ThemeService } from '../theme/theme.service';
 
 @UntilDestroy()
@@ -17,7 +23,7 @@ import { ThemeService } from '../theme/theme.service';
 export class ThemeToggleComponent implements OnInit {
   readonly themeControl = new FormControl();
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.setupThemeChangeSub();
@@ -43,7 +49,7 @@ export class ThemeToggleComponent implements OnInit {
   private setupThemeUpdateSub() {
     this.themeService
       .selectTheme()
-      .pipe(untilDestroyed(this))
+      .pipe(untilDestroyed(this), markForCheck(this.cd))
       .subscribe((theme) =>
         this.themeControl.setValue(theme === 'dark', { emitEvent: false })
       );
