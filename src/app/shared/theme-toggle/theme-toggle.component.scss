@@ -1,6 +1,28 @@
-:host {
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use '/src/theme/dark-theme.scss';
+@use '/src/theme/light-theme.scss';
+
+:host-context(.light-theme) {
+  .toggle {
+    $background: map.get(light-theme.$light-theme, background);
+    $foreground: map.get(light-theme.$light-theme, foreground);
+    background: mat.get-color-from-palette($background, background);
+    color: mat.get-color-from-palette($foreground, text);
+  }
+}
+
+.toggle {
   display: flex;
   align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  transition: background ease-in 250ms;
+  $background: map.get(dark-theme.$dark-theme, background);
+  $foreground: map.get(dark-theme.$dark-theme, foreground);
+  background: mat.get-color-from-palette($background, background);
+  color: mat.get-color-from-palette($foreground, text);
 }
 .theme-icon-container {
   display: flex;

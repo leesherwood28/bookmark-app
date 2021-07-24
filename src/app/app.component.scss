@@ -19,7 +19,9 @@ main {
 
   transition: background ease-in 250ms;
   $background: map.get(dark-theme.$dark-theme, background);
+  $foreground: map.get(dark-theme.$dark-theme, foreground);
   background: mat.get-color-from-palette($background, background);
+  color: mat.get-color-from-palette($foreground, text);
 }
 main > * {
   position: absolute;
@@ -29,5 +31,7 @@ main > * {
 
 .light-theme main {
   $background: map.get(light-theme.$light-theme, background);
+  $foreground: map.get(light-theme.$light-theme, foreground);
   background: mat.get-color-from-palette($background, background);
+  color: mat.get-color-from-palette($foreground, text);
 }
