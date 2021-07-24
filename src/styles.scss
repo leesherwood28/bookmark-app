@@ -1,39 +1,17 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '~@angular/material' as mat;
+@use './theme/dark-theme.scss' as darkTheme;
+@use './theme/light-theme.scss' as lightTheme;
 
 @include mat.core();
 
-// Define a light theme
-$light-primary: mat.define-palette(mat.$indigo-palette);
-$light-accent: mat.define-palette(mat.$pink-palette);
-$light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $light-primary,
-      accent: $light-accent,
-    ),
-  )
-);
-
-// Define a dark theme
-$dark-primary: mat.define-palette(mat.$pink-palette);
-$dark-accent: mat.define-palette(mat.$blue-gray-palette);
-$dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: $dark-primary,
-      accent: $dark-accent,
-    ),
-  )
-);
-
 // Apply the dark theme by default
-@include mat.all-component-themes($dark-theme);
+@include mat.all-component-themes(darkTheme.$dark-theme);
 
 // Apply the light theme when class is added to an ancestor element
 .light-theme {
-  @include mat.all-component-themes($light-theme);
+  @include mat.all-component-themes(lightTheme.$light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -44,5 +22,5 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
