@@ -1,4 +1,6 @@
-<app-header></app-header>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<div class="content" [class.light-theme]="isLightTheme$ | async">
+  <app-header></app-header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
