@@ -8,9 +8,8 @@ describe('ThemeToggleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThemeToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [ThemeToggleComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
