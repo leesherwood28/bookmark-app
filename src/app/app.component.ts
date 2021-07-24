@@ -9,6 +9,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 /**
  * The main app component
  */
-export class AppComponent {
-  title = 'bookmark-app';
-}
+export class AppComponent {}
