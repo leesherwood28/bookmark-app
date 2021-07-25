@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BookmarkService } from 'src/app/core/bookmark/bookmark.service';
 
@@ -13,6 +19,8 @@ export class BookmarkEditorComponent implements OnInit {
   nameControl!: FormControl;
   urlControl!: FormControl;
 
+  @Output() readonly bookmarkAdded = new EventEmitter<string>();
+
   constructor(private bookmarkService: BookmarkService) {}
 
   ngOnInit(): void {
@@ -24,10 +32,12 @@ export class BookmarkEditorComponent implements OnInit {
       return;
     }
 
-    this.bookmarkService.addBookmark({
+    const newBookmarkId = this.bookmarkService.addBookmark({
       name: this.nameControl.value,
       url: this.urlControl.value,
     });
+
+    this.bookmarkAdded.emit(newBookmarkId);
   }
 
   private setupForm() {

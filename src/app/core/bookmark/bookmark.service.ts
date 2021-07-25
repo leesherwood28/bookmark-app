@@ -30,14 +30,17 @@ export class BookmarkService {
   /**
    * Adds the provided bookmark to the stored bookmarks
    * @param {BookmarkAdd} newBookmark the new bookmark to add
+   * @return {string} The id of the newly added bookmark
    */
-  addBookmark(newBookmark: BookmarkAdd) {
+  addBookmark(newBookmark: BookmarkAdd): string {
     const bookmarks = this.bookmarks$.value;
+    const newBookmarkId = Guid.create().toString();
     bookmarks.push({
       name: newBookmark.name,
       url: newBookmark.url,
-      id: Guid.create().toString(),
+      id: newBookmarkId,
     });
     this.bookmarks$.next(bookmarks);
+    return newBookmarkId;
   }
 }
