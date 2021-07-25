@@ -28,6 +28,15 @@ export class BookmarkService {
   }
 
   /**
+   * Selects the bookmark with the provided id
+   * @param {string} id The id of the bookmark to select
+   * @return {Observable<Bookmark | undefined>} The selected bookmark
+   */
+  selectBookmark(id: string): Observable<Bookmark | undefined> {
+    return this.bookmarks$.pipe(map((bookmarks) => bookmarks.find((b) => b.id === id)));
+  }
+
+  /**
    * Adds the provided bookmark to the stored bookmarks
    * @param {BookmarkAdd} newBookmark the new bookmark to add
    * @return {string} The id of the newly added bookmark

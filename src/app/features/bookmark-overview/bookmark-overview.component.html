@@ -1,0 +1,6 @@
+<ng-container *ngIf="bookmark$ | async; let bookmark; else: loading"> </ng-container>
+
+<ng-template #loading></ng-template>
+<h3>Bookmark Details</h3>
+
+<label>Name:</label>
