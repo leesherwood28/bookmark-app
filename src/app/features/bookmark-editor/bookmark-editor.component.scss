@@ -1,8 +1,11 @@
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 1rem;
+}
+
+mat-card {
   width: 40vw;
+}
+mat-card-content {
   padding: 1rem;
 }
 
