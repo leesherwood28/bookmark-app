@@ -2,7 +2,7 @@
 
 :host {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 0 10%;
 }
 @include screen.screen-width-small {
