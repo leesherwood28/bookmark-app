@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Guid } from 'guid-typescript';
+import { map } from 'rxjs/operators';
 import { Bookmark } from './bookmark';
 import { BookmarkAdd } from './bookmark-add';
 
@@ -9,11 +10,21 @@ import { BookmarkAdd } from './bookmark-add';
 })
 export class BookmarkService {
   // TODO store in store service
-  private bookmarks$ = new BehaviorSubject<Bookmark[]>([]);
+  private readonly bookmarks$ = new BehaviorSubject<Bookmark[]>([]);
+
+  private readonly selectedBookmarkId$ = new BehaviorSubject<string | null>(null);
 
   // TODO replace with pagination
   selectBookmarks(): Observable<Bookmark[]> {
     return this.bookmarks$.asObservable();
+  }
+
+  selectSelectedBookmark(): Observable<Bookmark | undefined> {
+    return combineLatest([this.bookmarks$, this.selectedBookmarkId$]).pipe(
+      map(([bookmarks, selectedBookmarkId]) =>
+        bookmarks.find((b) => b.id === selectedBookmarkId)
+      )
+    );
   }
 
   /**
