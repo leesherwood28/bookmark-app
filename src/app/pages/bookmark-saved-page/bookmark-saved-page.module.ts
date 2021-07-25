@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { BookmarkSavedPageRoutingModule } from './bookmark-saved-page-routing.module';
+import { BookmarkOverviewModule } from 'src/app/features/bookmark-overview/bookmark-overview.module';
 import { BookmarkSavedPageComponent } from './bookmark-saved-page.component';
 
 @NgModule({
   declarations: [BookmarkSavedPageComponent],
-  imports: [CommonModule, BookmarkSavedPageRoutingModule],
+  imports: [CommonModule, BookmarkOverviewModule],
 })
 export class BookmarkSavedPageModule {}
