@@ -1,4 +1,4 @@
 export interface BookmarkAdd {
-  label: string;
+  name: string;
   url: string;
 }

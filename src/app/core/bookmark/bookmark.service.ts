@@ -34,7 +34,7 @@ export class BookmarkService {
   addBookmark(newBookmark: BookmarkAdd) {
     const bookmarks = this.bookmarks$.value;
     bookmarks.push({
-      label: newBookmark.label,
+      name: newBookmark.name,
       url: newBookmark.url,
       id: Guid.create().toString(),
     });
