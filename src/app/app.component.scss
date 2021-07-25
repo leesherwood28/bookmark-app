@@ -14,7 +14,7 @@ main {
   position: relative;
 }
 
-main > * {
+main > *:not(router-outlet) {
   position: absolute;
   inset: 0;
   height: 2000px;
