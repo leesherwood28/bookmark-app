@@ -1,3 +1,7 @@
 <ng-container *ngIf="savedBookmark$ | async; let bookmark">
+  <h2>
+    <ng-container *ngIf="saveType === 'add'"> New Bookmark Saved </ng-container>
+    <ng-container *ngIf="saveType === 'update'"> Bookmark Updated </ng-container>
+  </h2>
   <app-bookmark-overview [bookmark]="bookmark"></app-bookmark-overview>
 </ng-container>
