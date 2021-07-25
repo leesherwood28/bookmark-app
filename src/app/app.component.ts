@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ThemeService } from './shared/theme/theme.service';
+import { ThemeService } from './core/theme/theme.service';
 
 @Component({
   selector: 'app-root',
