@@ -1,2 +1,4 @@
-<app-bookmark-editor></app-bookmark-editor>
+<app-bookmark-editor
+  (bookmarkAdded)="navigateBookmarkSavedPage('add', $event)"
+></app-bookmark-editor>
 <app-bookmark-list></app-bookmark-list>

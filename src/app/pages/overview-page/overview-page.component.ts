@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { SaveType } from 'src/app/core/generic/save-type.type';
 
 @Component({
   selector: 'app-overview-page',
@@ -6,8 +8,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./overview-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewPageComponent implements OnInit {
-  constructor() {}
+export class OverviewPageComponent {
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  navigateBookmarkSavedPage(saveType: SaveType, bookmarkId: string) {
+    this.router.navigate(['/success'], {
+      state: {
+        saveType,
+        bookmarkId,
+      },
+    });
+  }
 }
