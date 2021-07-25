@@ -3,6 +3,7 @@
 @use '~@angular/material' as mat;
 @use './theme/dark-theme.scss';
 @use './theme/light-theme.scss';
+@use './theme/shared.scss';
 
 @include mat.core();
 
@@ -14,6 +15,11 @@
 .light-theme {
   @include mat.all-component-themes(light-theme.$light-theme);
   @include mat.core-theme(light-theme.$light-theme);
+}
+
+// Transition the toggling between themes
+.mat-app-background {
+  @include shared.transition-theme();
 }
 
 /* You can add global styles to this file, and also import other style files */
