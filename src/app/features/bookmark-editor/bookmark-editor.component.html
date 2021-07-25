@@ -1,4 +1,4 @@
-<form [formGroup]="bookmarkForm">
+<form [formGroup]="bookmarkForm" (ngSubmit)="saveBookmark()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>Edit Bookmark</mat-card-title>
