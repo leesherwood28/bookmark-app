@@ -7,7 +7,9 @@ function slideTo(direction: 'left' | 'right') {
       [
         style({
           position: 'absolute',
-          inset: '0',
+          top: '0',
+          [direction]: 0,
+          width: '100%',
         }),
       ],
       { optional: true }
