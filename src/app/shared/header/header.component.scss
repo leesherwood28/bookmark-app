@@ -1,33 +1,14 @@
-@use '~@angular/material' as mat;
-@use 'sass:map';
-@use '/src/theme/dark-theme.scss';
-@use '/src/theme/light-theme.scss';
-
-:host {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 2rem;
-  padding: 1rem;
-
-  $primary: dark-theme.$dark-primary;
-  color: mat.get-color-from-palette($primary, default-contrast);
-  background: mat.get-color-from-palette($primary);
-  transition: background ease-in 250ms;
-}
-
-:host-context(.light-theme) {
-  $primary: light-theme.$light-primary;
-  color: mat.get-color-from-palette($primary, default-contrast);
-  background: mat.get-color-from-palette($primary);
-}
+@use '/src/theme/shared.scss';
 
 .title {
-  margin-bottom: 0;
   margin-right: auto;
   display: flex;
   align-items: center;
 }
 .bookmark-icon {
   margin-right: 0.5rem;
+}
+mat-toolbar {
+  // Animate transition between light and dark theme
+  @include shared.transition-theme();
 }
