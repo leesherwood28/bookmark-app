@@ -3,18 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'success',
-    loadChildren: () =>
-      import('./bookmark/bookmark-saved-page/bookmark-saved-page.module').then(
-        (m) => m.BookmarkSavedPageModule
-      ),
-  },
-  {
     path: '',
     loadChildren: () =>
-      import('./bookmark/bookmark-overview-page/overview-page.module').then(
-        (m) => m.OverviewPageModule
-      ),
+      import('./bookmark/bookmark.module').then((m) => m.BookmarkModule),
   },
 ];
 
