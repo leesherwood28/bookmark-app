@@ -2,7 +2,7 @@ import { animate, group, query, style, transition, trigger } from '@angular/anim
 
 function translate(direction: 'left' | 'right', amount: number) {
   const translation = direction === 'left' ? -1 * amount : amount;
-  return `translate3d(${translation}, 0, 0)`;
+  return `translate3d(${translation}vw, 0, 0)`;
 }
 
 function slideTo(direction: 'left' | 'right') {
@@ -20,7 +20,7 @@ function slideTo(direction: 'left' | 'right') {
     group([
       query(
         ':leave',
-        [animate('600ms ease', style({ transform: translate(direction, 100) }))],
+        [animate('600ms ease', style({ transform: translate(direction, -100) }))],
         {
           optional: true,
         }
