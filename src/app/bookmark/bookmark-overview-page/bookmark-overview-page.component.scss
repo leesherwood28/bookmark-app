@@ -4,6 +4,9 @@
   display: flex;
   align-items: flex-start;
   padding: 0 10%;
+  & > * {
+    margin: 1rem;
+  }
 }
 @include screen.screen-width-small {
   :host {
