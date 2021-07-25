@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Bookmark } from 'src/app/core/bookmark/bookmark';
 
 @Component({
   selector: 'app-bookmark-saved-page',
@@ -7,7 +10,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkSavedPageComponent implements OnInit {
-  constructor() {}
+  savedBookmark!: Observable<Bookmark>;
 
-  ngOnInit(): void {}
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    console.log(this.route);
+  }
 }
