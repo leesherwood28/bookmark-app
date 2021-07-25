@@ -8,10 +8,12 @@
 
 // Apply the dark theme by default
 @include mat.all-component-themes(dark-theme.$dark-theme);
+@include mat.core-theme(dark-theme.$dark-theme);
 
 // Apply the light theme when class is added to an ancestor element
 .light-theme {
   @include mat.all-component-themes(light-theme.$light-theme);
+  @include mat.core-theme(light-theme.$light-theme);
 }
 
 /* You can add global styles to this file, and also import other style files */

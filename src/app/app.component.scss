@@ -9,6 +9,23 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  // Animate transition between light and dark theme
+  transition: background ease-in 250ms;
+
+  // Apply dark theme by default
+  $background: map.get(dark-theme.$dark-theme, background);
+  background: mat.get-color-from-palette($background, background);
+  $foreground: map.get(dark-theme.$dark-theme, foreground);
+  color: mat.get-color-from-palette($foreground, text);
+}
+
+// Apply light theme when light theme class added
+.content.light-theme {
+  $background: map.get(light-theme.$light-theme, background);
+  background: mat.get-color-from-palette($background, background);
+  $foreground: map.get(light-theme.$light-theme, foreground);
+  color: mat.get-color-from-palette($foreground, text);
 }
 
 main {
@@ -16,22 +33,10 @@ main {
   overflow: auto;
   padding: 1rem;
   position: relative;
-
-  transition: background ease-in 250ms;
-  $background: map.get(dark-theme.$dark-theme, background);
-  $foreground: map.get(dark-theme.$dark-theme, foreground);
-  background: mat.get-color-from-palette($background, background);
-  color: mat.get-color-from-palette($foreground, text);
 }
+
 main > * {
   position: absolute;
   inset: 0;
   height: 2000px;
-}
-
-.light-theme main {
-  $background: map.get(light-theme.$light-theme, background);
-  $foreground: map.get(light-theme.$light-theme, foreground);
-  background: mat.get-color-from-palette($background, background);
-  color: mat.get-color-from-palette($foreground, text);
 }
