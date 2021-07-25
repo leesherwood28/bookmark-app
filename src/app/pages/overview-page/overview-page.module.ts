@@ -4,14 +4,8 @@ import { CommonModule } from '@angular/common';
 import { OverviewPageRoutingModule } from './overview-page-routing.module';
 import { OverviewPageComponent } from './overview-page.component';
 
-
 @NgModule({
-  declarations: [
-    OverviewPageComponent
-  ],
-  imports: [
-    CommonModule,
-    OverviewPageRoutingModule
-  ]
+  declarations: [OverviewPageComponent],
+  imports: [CommonModule, OverviewPageRoutingModule],
 })
-export class OverviewPageModule { }
+export class OverviewPageModule {}
