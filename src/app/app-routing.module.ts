@@ -9,6 +9,7 @@ const routes: Routes = [
         (m) => m.OverviewPageModule
       ),
   },
+  { path: 'success', loadChildren: () => import('./pages/bookmark-saved-page/bookmark-saved-page.module').then(m => m.BookmarkSavedPageModule) },
 ];
 
 @NgModule({
