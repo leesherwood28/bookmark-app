@@ -13,9 +13,3 @@ main {
   text-align: center;
   position: relative;
 }
-
-main > *:not(router-outlet) {
-  position: absolute;
-  inset: 0;
-  height: 2000px;
-}
