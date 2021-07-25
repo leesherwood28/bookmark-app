@@ -5,14 +5,14 @@ const routes: Routes = [
   {
     path: 'success',
     loadChildren: () =>
-      import('./pages/bookmark-saved-page/bookmark-saved-page.module').then(
+      import('./bookmark/bookmark-saved-page/bookmark-saved-page.module').then(
         (m) => m.BookmarkSavedPageModule
       ),
   },
   {
     path: '',
     loadChildren: () =>
-      import('./pages/overview-page/overview-page.module').then(
+      import('./bookmark/overview-page/overview-page.module').then(
         (m) => m.OverviewPageModule
       ),
   },
