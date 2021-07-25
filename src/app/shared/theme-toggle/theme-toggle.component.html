@@ -2,12 +2,22 @@
   <mat-slide-toggle [formControl]="themeControl" color="primary"> </mat-slide-toggle>
   <div class="theme-icon-container">
     <div class="theme-icon">
-      <mat-icon *ngIf="themeControl.value" @fadeInOnEnter @fadeOutOnLeave
-        >dark_mode</mat-icon
-      >
-      <mat-icon *ngIf="!themeControl.value" @fadeInOnEnter @fadeOutOnLeave
-        >light_mode</mat-icon
-      >
+      <ng-container
+        *ngIf="themeControl.value"
+        [ngTemplateOutlet]="themeIcon"
+        [ngTemplateOutletContext]="{ icon: 'dark_mode' }"
+      ></ng-container>
+      <ng-container
+        *ngIf="!themeControl.value"
+        [ngTemplateOutlet]="themeIcon"
+        [ngTemplateOutletContext]="{ icon: 'light_mode' }"
+      ></ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #themeIcon let-icon="icon">
+  <mat-icon @fadeInOnEnter @fadeOutOnLeave>
+    {{ icon }}
+  </mat-icon>
+</ng-template>
