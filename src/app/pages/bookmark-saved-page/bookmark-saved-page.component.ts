@@ -4,13 +4,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-bookmark-saved-page',
   templateUrl: './bookmark-saved-page.component.html',
   styleUrls: ['./bookmark-saved-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkSavedPageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

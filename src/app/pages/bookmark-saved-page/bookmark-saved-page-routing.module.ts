@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: BookmarkSavedPageComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BookmarkSavedPageRoutingModule { }
+export class BookmarkSavedPageRoutingModule {}
