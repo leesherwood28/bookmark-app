@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./bookmark/overview-page/overview-page.module').then(
+      import('./bookmark/bookmark-overview-page/overview-page.module').then(
         (m) => m.OverviewPageModule
       ),
   },
