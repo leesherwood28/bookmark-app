@@ -4,12 +4,12 @@ import { SaveType } from 'src/app/core/generic/save-type.type';
 import { BookmarkSavedPageQueryParmas } from '../bookmark-saved-page/bookmark-saved-page-query-params';
 
 @Component({
-  selector: 'app-overview-page',
-  templateUrl: './overview-page.component.html',
-  styleUrls: ['./overview-page.component.scss'],
+  selector: 'app-bookmark-overview-page',
+  templateUrl: './bookmark-overview-page.component.html',
+  styleUrls: ['./bookmark-overview-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewPageComponent {
+export class BookmarkOverviewPageComponent {
   constructor(private router: Router) {}
 
   navigateBookmarkSavedPage(saveType: SaveType, bookmarkId: string) {
