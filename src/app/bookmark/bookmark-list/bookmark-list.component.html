@@ -7,7 +7,6 @@
       <ng-container *ngFor="let bookmark of bookmarks$ | async; let last = last">
         <mat-list-item>
           <div mat-line>{{ bookmark.name }}</div>
-          <div mat-line>{{ bookmark.url }}</div>
         </mat-list-item>
         <mat-divider *ngIf="!last"></mat-divider>
       </ng-container>
