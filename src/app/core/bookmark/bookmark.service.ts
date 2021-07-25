@@ -38,5 +38,6 @@ export class BookmarkService {
       url: newBookmark.url,
       id: Guid.create().toString(),
     });
+    this.bookmarks$.next(bookmarks);
   }
 }
