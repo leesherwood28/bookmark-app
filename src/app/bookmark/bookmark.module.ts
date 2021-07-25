@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookmarkRoutingModule } from './bookmark-routing.module';
 import { BookmarkEditorComponent } from './bookmark-editor/bookmark-editor.component';
@@ -28,6 +29,7 @@ import { BookmarkSavedPageComponent } from './bookmark-saved-page/bookmark-saved
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
   ],
