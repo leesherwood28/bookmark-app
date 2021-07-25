@@ -1,5 +1,11 @@
+@use '/src/theme/screen.scss';
+
 :host {
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+@include screen.screen-width-small {
+  :host {
+    flex-direction: column;
+  }
 }

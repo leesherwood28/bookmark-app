@@ -1,0 +1,7 @@
+$small-width-breakpoint: 599px;
+
+@mixin screen-width-small() {
+  @media screen and (max-width: $small-width-breakpoint) {
+    @content;
+  }
+}
