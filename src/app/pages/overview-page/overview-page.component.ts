@@ -12,11 +12,6 @@ export class OverviewPageComponent {
   constructor(private router: Router) {}
 
   navigateBookmarkSavedPage(saveType: SaveType, bookmarkId: string) {
-    this.router.navigate(['/success'], {
-      state: {
-        saveType,
-        bookmarkId,
-      },
-    });
+    this.router.navigate(['/success'], { queryParams: { bookmarkId, type: saveType } });
   }
 }
