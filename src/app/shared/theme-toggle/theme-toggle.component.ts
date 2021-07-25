@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation } from 'angular-animations';
 import { ThemeService } from 'src/app/core/theme/theme.service';
-import { markForCheck } from 'src/app/operators/mark-for-check.operator';
+import { markForCheck } from 'src/app/core/operators/mark-for-check.operator';
 
 @UntilDestroy()
 @Component({
