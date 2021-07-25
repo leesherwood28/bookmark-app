@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { isNil } from 'src/app/util/is-nil.fn';
+import { isNil } from 'src/app/core/util/is-nil.fn';
 
 @Injectable({
   providedIn: 'root',
