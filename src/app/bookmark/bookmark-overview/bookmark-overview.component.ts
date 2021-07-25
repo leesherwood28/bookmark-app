@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Bookmark } from 'src/app/core/bookmark/bookmark';
+import { Bookmark } from '../shared/bookmark';
 
 @Component({
   selector: 'app-bookmark-overview',

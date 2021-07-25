@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Bookmark } from 'src/app/core/bookmark/bookmark';
-import { BookmarkService } from 'src/app/core/bookmark/bookmark.service';
+import { Bookmark } from '../shared/bookmark';
+import { BookmarkService } from '../shared/bookmark.service';
 
 @Component({
   selector: 'app-bookmark-list',

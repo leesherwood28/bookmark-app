@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Bookmark } from 'src/app/core/bookmark/bookmark';
-import { BookmarkService } from 'src/app/core/bookmark/bookmark.service';
 import { SaveType } from 'src/app/core/generic/save-type.type';
+import { Bookmark } from '../shared/bookmark';
+import { BookmarkService } from '../shared/bookmark.service';
 import { BookmarkSavedPageQueryParmas } from './bookmark-saved-page-query-params';
 
 @Component({

@@ -6,7 +6,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { BookmarkService } from 'src/app/core/bookmark/bookmark.service';
+import { BookmarkService } from '../shared/bookmark.service';
 
 @Component({
   selector: 'app-bookmark-editor',
