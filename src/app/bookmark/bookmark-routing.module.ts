@@ -10,14 +10,14 @@ const routes: Routes = [
     component: BookmarkSavedPageComponent,
     canActivate: [BookmarkSavedPageGuard],
     data: {
-      animation: 'isLeft',
+      animation: 'isRight',
     },
   },
   {
     path: '',
     component: BookmarkOverviewPageComponent,
     data: {
-      animation: 'isRight',
+      animation: 'isLeft',
     },
   },
 ];

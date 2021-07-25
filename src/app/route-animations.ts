@@ -6,7 +6,6 @@ function slideTo(direction: 'left' | 'right') {
       ':enter, :leave',
       [
         style({
-          position: 'absolute',
           [direction]: 0,
         }),
       ],
