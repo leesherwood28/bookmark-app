@@ -5,5 +5,6 @@ import { BookmarkOverviewComponent } from './bookmark-overview.component';
 @NgModule({
   declarations: [BookmarkOverviewComponent],
   imports: [CommonModule],
+  exports: [BookmarkOverviewComponent],
 })
 export class BookmarkOverviewModule {}
