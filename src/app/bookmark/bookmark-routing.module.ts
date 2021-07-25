@@ -9,10 +9,16 @@ const routes: Routes = [
     path: 'success',
     component: BookmarkSavedPageComponent,
     canActivate: [BookmarkSavedPageGuard],
+    data: {
+      animation: 'isLeft',
+    },
   },
   {
     path: '',
     component: BookmarkOverviewPageComponent,
+    data: {
+      animation: 'isRight',
+    },
   },
 ];
 
