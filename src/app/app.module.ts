@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './shared/header/header.module';
 
-const defaultFormOptions: MatFormFieldDefaultOptions = {
+const defaultMatFormFieldOptions: MatFormFieldDefaultOptions = {
   appearance: 'fill',
 };
 @NgModule({
@@ -19,7 +19,7 @@ const defaultFormOptions: MatFormFieldDefaultOptions = {
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: defaultFormOptions,
+      useValue: defaultMatFormFieldOptions,
     },
   ],
   bootstrap: [AppComponent],
