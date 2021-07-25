@@ -2,15 +2,12 @@ import { animate, group, query, style, transition, trigger } from '@angular/anim
 
 function slideTo(direction: 'left' | 'right') {
   return [
-    query('*', style({ position: 'absolute' })),
     query(
       ':enter, :leave',
       [
         style({
           position: 'absolute',
-          top: '0',
           [direction]: 0,
-          width: '100%',
         }),
       ],
       { optional: true }

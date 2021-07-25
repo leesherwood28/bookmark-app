@@ -8,7 +8,8 @@
 
 main {
   flex-grow: 1;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 8vh 1rem;
   text-align: center;
   position: relative;
