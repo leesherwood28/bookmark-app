@@ -1,8 +1,3 @@
-@use '~@angular/material' as mat;
-@use 'sass:map';
-@use '/src/theme/dark-theme.scss';
-@use '/src/theme/light-theme.scss';
-
 .content {
   width: 100vw;
   height: 100vh;
@@ -12,20 +7,6 @@
 
   // Animate transition between light and dark theme
   transition: background ease-in 250ms;
-
-  // Apply dark theme by default
-  $background: map.get(dark-theme.$dark-theme, background);
-  background: mat.get-color-from-palette($background, background);
-  $foreground: map.get(dark-theme.$dark-theme, foreground);
-  color: mat.get-color-from-palette($foreground, text);
-}
-
-// Apply light theme when light theme class added
-.content.light-theme {
-  $background: map.get(light-theme.$light-theme, background);
-  background: mat.get-color-from-palette($background, background);
-  $foreground: map.get(light-theme.$light-theme, foreground);
-  color: mat.get-color-from-palette($foreground, text);
 }
 
 main {
