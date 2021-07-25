@@ -8,5 +8,5 @@ import { Bookmark } from 'src/app/core/bookmark/bookmark';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkOverviewComponent {
-  @Input() bookmark!: Bookmark;
+  @Input() bookmark!: Bookmark | undefined;
 }

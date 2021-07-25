@@ -1,7 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Bookmark } from 'src/app/core/bookmark/bookmark';
+import { BookmarkService } from 'src/app/core/bookmark/bookmark.service';
+import { SaveType } from 'src/app/core/generic/save-type.type';
+import { BookmarkSavedPageQueryParmas } from './bookmark-saved-page-query-params';
 
 @Component({
   selector: 'app-bookmark-saved-page',
@@ -10,11 +14,18 @@ import { Bookmark } from 'src/app/core/bookmark/bookmark';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkSavedPageComponent implements OnInit {
-  savedBookmark!: Observable<Bookmark>;
+  saveType!: SaveType;
+  savedBookmark$!: Observable<Bookmark | undefined>;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private bookmarkService: BookmarkService) {}
 
   ngOnInit(): void {
-    console.log(this.route);
+    const routeSnapshot = this.route.snapshot;
+    const params = routeSnapshot.queryParams as BookmarkSavedPageQueryParmas;
+    this.saveType = params.type;
+    this.savedBookmark$ = this.bookmarkService
+      .selectBookmark(params.bookmarkId)
+      // Take 1 since we only want the last snapshot of the data
+      .pipe(take(1));
   }
 }
