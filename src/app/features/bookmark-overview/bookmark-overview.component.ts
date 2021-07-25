@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Bookmark } from 'src/app/core/bookmark/bookmark';
 
 @Component({
@@ -7,6 +7,6 @@ import { Bookmark } from 'src/app/core/bookmark/bookmark';
   styleUrls: ['./bookmark-overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookmarkOverviewComponent implements OnChanges {
+export class BookmarkOverviewComponent {
   @Input() bookmark!: Bookmark;
 }
