@@ -19,6 +19,17 @@ export class BookmarkEditorComponent implements OnInit {
     this.setupForm();
   }
 
+  saveBookmark() {
+    if (this.bookmarkForm.invalid) {
+      return;
+    }
+
+    this.bookmarkService.addBookmark({
+      name: this.nameControl.value,
+      url: this.urlControl.value,
+    });
+  }
+
   private setupForm() {
     this.nameControl = new FormControl();
     this.urlControl = new FormControl();
