@@ -41,7 +41,8 @@
           }
         ],
         "no-console": "off",
-        "require-jsdoc": "off"
+        "require-jsdoc": "off",
+        "@typescript-eslint/lines-between-class-members": "off"
       }
     },
     {
