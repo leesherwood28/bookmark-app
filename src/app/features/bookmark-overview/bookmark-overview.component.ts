@@ -11,16 +11,16 @@ import { isNil } from 'src/app/util/is-nil.fn';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkOverviewComponent implements OnChanges {
-  @Input() Id!: string;
+  @Input() bookmarkId!: string;
 
   bookmark$!: Observable<Bookmark | undefined>;
 
   constructor(private bookmarkService: BookmarkService) {}
 
   ngOnChanges(): void {
-    if (isNil(this.Id)) {
+    if (isNil(this.bookmarkId)) {
       throw new Error('No bookmark id provided to control');
     }
-    this.bookmark$ = this.bookmarkService.selectBookmark(this.Id);
+    this.bookmark$ = this.bookmarkService.selectBookmark(this.bookmarkId);
   }
 }
