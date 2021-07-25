@@ -1,24 +1,37 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
+function translate(direction: 'left' | 'right', amount: number) {
+  const translation = direction === 'left' ? -1 * amount : amount;
+  return `translate3d(${translation}, 0, 0)`;
+}
+
 function slideTo(direction: 'left' | 'right') {
   return [
     query(
       ':enter, :leave',
       [
         style({
-          [direction]: 0,
+          transform: translate(direction, 0),
         }),
       ],
       { optional: true }
     ),
-    query(':enter', [style({ [direction]: '-100%' })]),
+    query(':enter', [style({ transform: translate(direction, 100) })]),
     group([
-      query(':leave', [animate('600ms ease', style({ [direction]: '100%' }))], {
-        optional: true,
-      }),
-      query(':enter', [animate('600ms ease', style({ [direction]: '0%' }))], {
-        optional: true,
-      }),
+      query(
+        ':leave',
+        [animate('600ms ease', style({ transform: translate(direction, 100) }))],
+        {
+          optional: true,
+        }
+      ),
+      query(
+        ':enter',
+        [animate('600ms ease', style({ transform: translate(direction, 0) }))],
+        {
+          optional: true,
+        }
+      ),
     ]),
   ];
 }
