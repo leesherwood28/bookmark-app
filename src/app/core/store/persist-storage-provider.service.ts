@@ -30,5 +30,5 @@ export abstract class PersistStorageProviderService {
    * @param {string} key The key to listen for changes to
    * @return {any} The new data
    */
-  abstract selectForiegnUpdateToData?(key: string): Observable<any>;
+  abstract selectForeignUpdateToData?(key: string): Observable<any>;
 }

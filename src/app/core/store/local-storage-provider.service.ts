@@ -5,6 +5,10 @@ import { runInZone } from '../operators/run-in-zone.operator';
 import { isNil } from '../util/is-nil.fn';
 import { PersistStorageProviderService } from './persist-storage-provider.service';
 
+/**
+ * Determines if local storage is available
+ * @return {boolean} indicates if local storage available
+ */
 const hasLocalStorage = () => {
   try {
     if (typeof localStorage === 'undefined') {
@@ -60,7 +64,7 @@ export class LocalStorageProviderService extends PersistStorageProviderService {
    * @param {string} key The key to listen for changes to
    * @return {any} The new data
    */
-  selectForiegnUpdateToData(key: string): Observable<any> {
+  selectForeignUpdateToData(key: string): Observable<any> {
     return fromEvent<StorageEvent>(window, 'storage').pipe(
       filter((e: StorageEvent) => e.key === key),
       map((e) => (isNil(e.newValue) ? e.newValue : JSON.parse(e.newValue))),
