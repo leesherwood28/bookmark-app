@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { PersistStorageProviderService } from '../store/persist-storage-provider.service';
+import { Store } from '../store/store';
 import { Theme } from './theme.type';
 
 @Injectable({
@@ -9,14 +11,20 @@ import { Theme } from './theme.type';
  * Used to get and set the application theme
  */
 export class ThemeService {
-  private readonly theme$ = new BehaviorSubject<Theme>('light');
+  private readonly themeStore = new Store<Theme>({
+    key: 'theme',
+    initState: 'dark',
+    persistentStorageProvider: this.persistStore,
+  });
+
+  constructor(@Optional() private persistStore: PersistStorageProviderService) {}
 
   /**
    * Selects the current theme of the application
    * @return {Observable<Theme>} An observable of the theme
    */
   selectTheme(): Observable<Theme> {
-    return this.theme$.asObservable();
+    return this.themeStore.selectState();
   }
 
   /**
@@ -24,6 +32,6 @@ export class ThemeService {
    * @param {Theme} theme The new theme to set
    */
   setTheme(theme: Theme) {
-    this.theme$.next(theme);
+    this.themeStore.setState(theme);
   }
 }
