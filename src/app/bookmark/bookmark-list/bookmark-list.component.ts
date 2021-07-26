@@ -1,11 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Page } from 'src/app/core/pagination/page.model';
-import { PagedData } from 'src/app/core/pagination/paged-data.model';
-import { PaginationService } from 'src/app/core/pagination/pagination.service';
-import { Bookmark } from '../shared/bookmark';
 import { BookmarkService } from '../shared/bookmark.service';
 
 @Component({
@@ -14,24 +11,19 @@ import { BookmarkService } from '../shared/bookmark.service';
   styleUrls: ['./bookmark-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookmarkListComponent implements OnInit {
+export class BookmarkListComponent {
   readonly pageSize = 5;
-  readonly bookmarks$: Observable<Bookmark[]>;
 
   readonly requestedPage$ = new BehaviorSubject<Page>({
     pageIndex: 0,
     pageSize: this.pageSize,
   });
 
-  readonly pagedBookmarks$: Subject<PagedData<Bookmark>> = this.requestedPage$.pipe(
-    switchMap((page) => )
+  readonly pagedBookmarks$ = this.requestedPage$.pipe(
+    switchMap((page) => this.bookmarkService.selectPagedBookmarks(page))
   );
 
-  constructor(private bookmarkService: BookmarkService) {
-    this.bookmarks$ = this.bookmarkService.selectBookmarks();
-  }
-
-  ngOnInit(): void {}
+  constructor(private bookmarkService: BookmarkService) {}
 
   /**
    * Updates the requested page state
