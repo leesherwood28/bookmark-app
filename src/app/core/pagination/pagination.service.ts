@@ -22,6 +22,7 @@ export class PaginationService {
     return {
       pagedRecords,
       totalRecords,
+      pageIndex: requestPage.pageIndex,
     };
   }
 }

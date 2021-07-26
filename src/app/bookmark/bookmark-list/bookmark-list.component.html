@@ -13,7 +13,11 @@
             <mat-divider *ngIf="!last"></mat-divider>
           </ng-container>
         </mat-selection-list>
-        <mat-paginator [pageSize]="pageSize"></mat-paginator>
+        <mat-paginator
+          [pageSize]="pageSize"
+          [pageIndex]="bookmarks.pageIndex"
+          [length]="bookmarks.totalRecords"
+        ></mat-paginator>
       </ng-container>
     </ng-container>
   </mat-card-content>
