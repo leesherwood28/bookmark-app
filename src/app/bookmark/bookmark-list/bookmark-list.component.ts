@@ -14,13 +14,15 @@ import { BookmarkService } from '../shared/bookmark.service';
 export class BookmarkListComponent {
   readonly pageSize = 5;
 
+  readonly initalPage: Page = {
+    pageIndex: 0,
+    pageSize: this.pageSize,
+  };
+
   /**
    * Stores currently requested page for the bookmark list
    */
-  readonly requestedPage$ = new BehaviorSubject<Page>({
-    pageIndex: 0,
-    pageSize: this.pageSize,
-  });
+  readonly requestedPage$ = new BehaviorSubject<Page>(this.initalPage);
 
   /**
    * The currently viewing paged bookmark data
