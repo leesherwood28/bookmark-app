@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -14,11 +14,17 @@ import { BookmarkService } from '../shared/bookmark.service';
 export class BookmarkListComponent {
   readonly pageSize = 5;
 
+  /**
+   * Stores currently requested page for the bookmark list
+   */
   readonly requestedPage$ = new BehaviorSubject<Page>({
     pageIndex: 0,
     pageSize: this.pageSize,
   });
 
+  /**
+   * Selected the paged bookmarks
+   */
   readonly pagedBookmarks$ = this.requestedPage$.pipe(
     switchMap((page) => this.bookmarkService.selectPagedBookmarks(page))
   );
