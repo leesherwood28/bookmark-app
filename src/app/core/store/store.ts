@@ -1,9 +1,10 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, SubscriptionLike } from 'rxjs';
 import { isNil } from '../util/is-nil.fn';
 import { PersistStorageProviderService } from './persist-storage-provider.service';
 
 export class Store<T> {
   private storedState$!: BehaviorSubject<T>;
+  private sink!: SubscriptionLike;
 
   constructor(
     private key: string,
@@ -13,19 +14,60 @@ export class Store<T> {
     this.initializeStore();
   }
 
-  private initializeStore() {
-    const initialState = this.getInitialState();
-    this.storedState$ = new BehaviorSubject<T>(initialState);
+  destroy() {
+    if (this.sink) {
+      this.sink.unsubscribe();
+    }
   }
 
-  protected update(data: Readonly<T>) {}
+  /**
+   * Sets the store state
+   * @param {T} state The state to set
+   */
+  setState(state: T) {
+    this.storedState$.next(state);
+    if (this.canUsePersistence()) {
+      this.persistStore?.setPersistedData(this.key, state);
+    }
+  }
 
-  protected getData(): T {
+  /**
+   * Gets the store state
+   * @return {T} the store state
+   */
+  getState(): T {
     return this.storedState$.value;
   }
 
-  protected selectData(): Observable<T> {
+  /**
+   * Selects the store state
+   * @return {Observable<T>} The store state selection
+   */
+  selectState(): Observable<T> {
     return this.storedState$.asObservable();
+  }
+
+  /**
+   * Subscribes to foreign data updates
+   */
+  private subscribeForeignDataUpdates() {
+    if (!this.canUsePersistence() || !this.persistStore?.selectForeignUpdateToData) {
+      return;
+    }
+    this.sink = this.persistStore
+      ?.selectForeignUpdateToData(this.key)
+      .subscribe((state) => {
+        this.storedState$.next(state);
+      });
+  }
+
+  /**
+   * Initialises the store
+   */
+  private initializeStore() {
+    const initialState = this.getInitialState();
+    this.storedState$ = new BehaviorSubject<T>(initialState);
+    this.subscribeForeignDataUpdates();
   }
 
   /**
