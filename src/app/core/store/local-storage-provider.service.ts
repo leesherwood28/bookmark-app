@@ -55,7 +55,8 @@ export class LocalStorageProviderService extends PersistStorageProviderService {
    * @return {any} the data at the key
    */
   getPersistedData(key: string): any {
-    return localStorage.getItem(key);
+    const localItem = localStorage.getItem(key);
+    return isNil(localItem) ? null : JSON.parse(localItem);
   }
 
   /**
