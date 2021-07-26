@@ -49,6 +49,19 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
+   * Clears the form
+   */
+  clearForm() {
+    this.bookmarkForm.setValue(
+      {
+        name: '',
+        url: '',
+      },
+      { emitEvent: false }
+    );
+  }
+
+  /**
    * Sets up the form
    */
   private setupForm() {
