@@ -3,19 +3,19 @@
     <mat-card-title>Bookmarks</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-selection-list [multiple]="false">
-      <ng-container *ngIf="bookmarks$ | async; let bookmarks">
-        <ng-container *ngIf="bookmarks.length !== 0; else noBookmarksMessage">
-          <ng-container *ngFor="let bookmark of bookmarks; let last = last">
+    <ng-container *ngIf="bookmarks$ | async; let bookmarks">
+      <ng-container *ngIf="bookmarks.length !== 0; else noBookmarksMessage">
+        <ng-container *ngFor="let bookmark of bookmarks; let last = last">
+          <mat-selection-list [multiple]="false">
             <mat-list-option>
               <div mat-line>{{ bookmark.name }}</div>
             </mat-list-option>
             <mat-divider *ngIf="!last"></mat-divider>
-            <mat-paginator></mat-paginator>
-          </ng-container>
+          </mat-selection-list>
+          <mat-paginator [pageSize]="5"></mat-paginator>
         </ng-container>
       </ng-container>
-    </mat-selection-list>
+    </ng-container>
   </mat-card-content>
 </mat-card>
 
