@@ -3,9 +3,9 @@
     <mat-card-title>Bookmarks</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <ng-container *ngIf="bookmarks$ | async; let bookmarks">
-      <ng-container *ngIf="bookmarks.length !== 0; else noBookmarksMessage">
-        <ng-container *ngFor="let bookmark of bookmarks; let last = last">
+    <ng-container *ngIf="pagedBookmarks$ | async; let bookmarks">
+      <ng-container *ngIf="bookmarks.totalRecords !== 0; else noBookmarksMessage">
+        <ng-container *ngFor="let bookmark of bookmarks.pagedRecords; let last = last">
           <mat-selection-list [multiple]="false">
             <mat-list-option>
               <div mat-line>{{ bookmark.name }}</div>
