@@ -17,6 +17,6 @@ export class BookmarkOverviewPageComponent {
       bookmarkId,
       type: saveType,
     };
-    this.router.navigate(['/success'], { queryParams: params });
+    // this.router.navigate(['/success'], { queryParams: params });
   }
 }
