@@ -4,7 +4,7 @@ import { PersistStorageProviderService } from './persist-storage-provider.servic
 
 export class Store<T> {
   private storedState$!: BehaviorSubject<T>;
-  private sink!: SubscriptionLike;
+  private foreignDataSub!: SubscriptionLike;
 
   constructor(
     private key: string,
@@ -14,9 +14,12 @@ export class Store<T> {
     this.initializeStore();
   }
 
+  /**
+   * Destorys the resources of the store
+   */
   destroy() {
-    if (this.sink) {
-      this.sink.unsubscribe();
+    if (this.foreignDataSub) {
+      this.foreignDataSub.unsubscribe();
     }
   }
 
@@ -54,7 +57,7 @@ export class Store<T> {
     if (!this.canUsePersistence() || !this.persistStore?.selectForeignUpdateToData) {
       return;
     }
-    this.sink = this.persistStore
+    this.foreignDataSub = this.persistStore
       ?.selectForeignUpdateToData(this.key)
       .subscribe((state) => {
         this.storedState$.next(state);
