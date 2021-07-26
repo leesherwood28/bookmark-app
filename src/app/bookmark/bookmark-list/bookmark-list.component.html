@@ -17,6 +17,7 @@
           [pageSize]="pageSize"
           [pageIndex]="bookmarks.pageIndex"
           [length]="bookmarks.totalRecords"
+          (page)="changePage($event)"
         ></mat-paginator>
       </ng-container>
     </ng-container>
