@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { bounceInOnEnterAnimation, bounceOutOnLeaveAnimation } from 'angular-animations';
 import { markForCheck } from 'src/app/core/operators/mark-for-check.operator';
 import { isNil } from 'src/app/core/util/is-nil.fn';
 import { Bookmark } from '../shared/bookmark';
@@ -19,6 +20,7 @@ import { BookmarkService } from '../shared/bookmark.service';
   templateUrl: './bookmark-editor.component.html',
   styleUrls: ['./bookmark-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [bounceInOnEnterAnimation(), bounceOutOnLeaveAnimation()],
 })
 export class BookmarkEditorComponent implements OnInit {
   bookmarkForm!: FormGroup;
