@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatSelectionListChange } from '@angular/material/list';
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -43,5 +44,14 @@ export class BookmarkListComponent {
       pageIndex: pageEvent.pageIndex,
       pageSize: pageEvent.pageSize,
     });
+  }
+
+  /**
+   * Updates the selected bookmark from the provided
+   * selection change
+   * @param {MatSelectionListChange} selectionChange the selection change
+   */
+  updateSelectedBookmark(selectionChange: MatSelectionListChange) {
+    this.bookmarkService.setSelectedBookmark(selectionChange.options[0].value);
   }
 }

@@ -41,6 +41,10 @@ export class BookmarkService {
       );
   }
 
+  /**
+   * Selects the selected bookmark
+   * @return {Observable<Bookmark | undefined>} the selected bookmark
+   */
   selectSelectedBookmark(): Observable<Bookmark | undefined> {
     return combineLatest([
       this.bookmarkStore.selectState(),
@@ -50,6 +54,14 @@ export class BookmarkService {
         bookmarks.find((b) => b.id === selectedBookmarkId)
       )
     );
+  }
+
+  /**
+   * Sets the selected bookmark
+   * @param {string | null} bookmarkId the id of the bookmark to set
+   */
+  setSelectedBookmark(bookmarkId: string | null) {
+    this.selectedBookmarkId$.next(bookmarkId);
   }
 
   /**
