@@ -43,7 +43,8 @@
         "no-console": "off",
         "require-jsdoc": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "no-invalid-this": "off"
       }
     },
     {

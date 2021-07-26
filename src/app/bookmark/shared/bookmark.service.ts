@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Guid } from 'guid-typescript';
 import { map } from 'rxjs/operators';
+import { PagedData } from 'src/app/core/pagination/paged-data.model';
+import { PaginationService } from 'src/app/core/pagination/pagination.service';
+import { Page } from 'src/app/core/pagination/page.model';
 import { Bookmark } from './bookmark';
 import { BookmarkAdd } from './bookmark-add';
 
@@ -14,9 +17,18 @@ export class BookmarkService {
 
   private readonly selectedBookmarkId$ = new BehaviorSubject<string | null>(null);
 
-  // TODO replace with pagination
-  selectBookmarks(): Observable<Bookmark[]> {
-    return this.bookmarks$.asObservable();
+  constructor(private paginationService: PaginationService) {}
+
+  /**
+   * Selects a page of bookmarks for the provided
+   * requested page
+   * @param {Page} requestePage The requested page
+   * @return {Observable<PagedData<Bookmark>>} Observable of paged data
+   */
+  selectPagedBookmarks(requestePage: Page): Observable<PagedData<Bookmark>> {
+    return this.bookmarks$.pipe(
+      map((records) => this.paginationService.getPagedRecords(records, requestePage))
+    );
   }
 
   selectSelectedBookmark(): Observable<Bookmark | undefined> {
