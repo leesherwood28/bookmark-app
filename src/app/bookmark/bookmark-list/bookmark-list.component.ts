@@ -23,7 +23,7 @@ export class BookmarkListComponent {
   });
 
   /**
-   * Selected the paged bookmarks
+   * The currently viewing paged bookmark data
    */
   readonly pagedBookmarks$ = this.requestedPage$.pipe(
     switchMap((page) => this.bookmarkService.selectPagedBookmarks(page))
