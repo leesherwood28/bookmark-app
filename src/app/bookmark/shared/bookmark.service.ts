@@ -14,11 +14,11 @@ import { BookmarkAdd } from './bookmark-add';
   providedIn: 'root',
 })
 export class BookmarkService {
-  private readonly bookmarkStore = new Store<Bookmark[]>(
-    'bookmarks',
-    [],
-    this.persistStore
-  );
+  private readonly bookmarkStore = new Store<Bookmark[]>({
+    key: 'bookmarks',
+    initState: [],
+    persistentStorageProvider: this.persistStore,
+  });
 
   private readonly selectedBookmarkId$ = new BehaviorSubject<string | null>(null);
 
