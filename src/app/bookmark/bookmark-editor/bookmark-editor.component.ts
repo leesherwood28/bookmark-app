@@ -29,6 +29,7 @@ export class BookmarkEditorComponent implements OnInit {
   bookmarkId!: string | null;
 
   @Output() readonly bookmarkAdded = new EventEmitter<string>();
+  @Output() readonly bookmarkUpdated = new EventEmitter<string>();
 
   constructor(private bookmarkService: BookmarkService, private cd: ChangeDetectorRef) {}
 
@@ -37,17 +38,36 @@ export class BookmarkEditorComponent implements OnInit {
     this.updateOnSelectedBookmarkChange();
   }
 
-  saveBookmark() {
+  /**
+   * Adds the forms bookmark to the global state
+   */
+  addBookmark() {
     if (this.bookmarkForm.invalid) {
       return;
     }
-
     const newBookmarkId = this.bookmarkService.addBookmark({
       name: this.nameControl.value,
       url: this.urlControl.value,
     });
-
     this.bookmarkAdded.emit(newBookmarkId);
+  }
+
+  /**
+   * Updates the forms bookmark in the global state
+   */
+  updateBookmark() {
+    if (this.bookmarkForm.invalid) {
+      return;
+    }
+    if (isNil(this.bookmarkId)) {
+      throw new Error('Attempting to update bookmark with no id');
+    }
+    this.bookmarkService.updateBookmark({
+      id: this.bookmarkId,
+      name: this.nameControl.value,
+      url: this.urlControl.value,
+    });
+    this.bookmarkUpdated.emit(this.bookmarkId);
   }
 
   /**

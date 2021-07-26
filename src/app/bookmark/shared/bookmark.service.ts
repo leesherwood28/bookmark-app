@@ -7,6 +7,7 @@ import { PaginationService } from 'src/app/core/pagination/pagination.service';
 import { Page } from 'src/app/core/pagination/page.model';
 import { Store } from 'src/app/core/store/store';
 import { PersistStorageProviderService } from 'src/app/core/store/persist-storage-provider.service';
+import { isNil } from 'src/app/core/util/is-nil.fn';
 import { Bookmark } from './bookmark';
 import { BookmarkAdd } from './bookmark-add';
 
@@ -90,5 +91,19 @@ export class BookmarkService {
     });
     this.bookmarkStore.setState(bookmarks);
     return newBookmarkId;
+  }
+
+  /**
+   * Updates the provided bookmark
+   * @param {Bookmark} bookmark the bookmark to update
+   */
+  updateBookmark(bookmark: Bookmark) {
+    const bookmarks = this.bookmarkStore.getState();
+    const bookmarkToEditIndex = bookmarks.findIndex((b) => b.id === bookmark.id);
+    if (bookmarkToEditIndex === -1) {
+      this.addBookmark(bookmark);
+    }
+    bookmarks[bookmarkToEditIndex] = bookmark;
+    this.bookmarkStore.setState(bookmarks);
   }
 }
