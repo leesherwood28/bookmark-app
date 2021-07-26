@@ -1,16 +1,12 @@
 import { BehaviorSubject, Observable, SubscriptionLike } from 'rxjs';
 import { isNil } from '../util/is-nil.fn';
-import { PersistStorageProviderService } from './persist-storage-provider.service';
+import { StoreOptions } from './store-options';
 
 export class Store<T> {
   private storedState$!: BehaviorSubject<T>;
   private foreignDataSub!: SubscriptionLike;
 
-  constructor(
-    private key: string,
-    private initState: T,
-    private persistStore?: PersistStorageProviderService
-  ) {
+  constructor(private options: StoreOptions<T>) {
     this.initializeStore();
   }
 
@@ -30,7 +26,7 @@ export class Store<T> {
   setState(state: T) {
     this.storedState$.next(state);
     if (this.canUsePersistence()) {
-      this.persistStore?.setPersistedData(this.key, state);
+      this.options.persistentStorageProvider?.setPersistedData(this.options.key, state);
     }
   }
 
@@ -54,11 +50,14 @@ export class Store<T> {
    * Subscribes to foreign data updates
    */
   private subscribeForeignDataUpdates() {
-    if (!this.canUsePersistence() || !this.persistStore?.selectForeignUpdateToData) {
+    if (
+      !this.canUsePersistence() ||
+      !this.options?.persistentStorageProvider?.selectForeignUpdateToData
+    ) {
       return;
     }
-    this.foreignDataSub = this.persistStore
-      ?.selectForeignUpdateToData(this.key)
+    this.foreignDataSub = this.options.persistentStorageProvider
+      ?.selectForeignUpdateToData(this.options.key)
       .subscribe((state) => {
         this.storedState$.next(state);
       });
@@ -79,14 +78,16 @@ export class Store<T> {
    */
   private getInitialState(): T {
     if (!this.canUsePersistence()) {
-      return this.initState;
+      return this.options.initState;
     }
 
-    const persistedState = this.persistStore?.getPersistedData(this.key) as T | null;
+    const persistedState = this.options.persistentStorageProvider?.getPersistedData(
+      this.options.key
+    ) as T | null;
     if (!isNil(persistedState)) {
       return persistedState;
     }
-    return this.initState;
+    return this.options.initState;
   }
 
   /**
@@ -94,6 +95,9 @@ export class Store<T> {
    * @return {boolean} value indicating if persistence can be used
    */
   private canUsePersistence(): boolean {
-    return !isNil(this.persistStore) && this.persistStore.storageAvailable();
+    return (
+      !isNil(this.options.persistentStorageProvider) &&
+      this.options.persistentStorageProvider.storageAvailable()
+    );
   }
 }
