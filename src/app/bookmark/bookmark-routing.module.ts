@@ -20,6 +20,11 @@ const routes: Routes = [
       animation: 'isLeft',
     },
   },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
