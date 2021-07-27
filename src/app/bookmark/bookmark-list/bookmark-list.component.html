@@ -20,7 +20,7 @@
               <a
                 mat-button
                 color="primary"
-                [href]="'//' + bookmark.url"
+                [href]="bookmark.url | includeProtocol"
                 target="_blank"
                 >{{ bookmark.name }}</a
               >
