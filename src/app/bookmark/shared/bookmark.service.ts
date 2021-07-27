@@ -1,13 +1,12 @@
 import { Injectable, Optional } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Guid } from 'guid-typescript';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Page } from 'src/app/core/pagination/page.model';
 import { PagedData } from 'src/app/core/pagination/paged-data.model';
 import { PaginationService } from 'src/app/core/pagination/pagination.service';
-import { Page } from 'src/app/core/pagination/page.model';
-import { Store } from 'src/app/core/store/store';
 import { PersistStorageProviderService } from 'src/app/core/store/persist-storage-provider.service';
-import { isNil } from 'src/app/core/util/is-nil.fn';
+import { Store } from 'src/app/core/store/store';
 import { Bookmark } from './bookmark';
 import { BookmarkAdd } from './bookmark-add';
 
