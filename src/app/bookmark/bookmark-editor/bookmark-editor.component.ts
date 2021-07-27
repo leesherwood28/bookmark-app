@@ -41,16 +41,18 @@ export class BookmarkEditorComponent implements OnInit {
 
   /**
    * Saves the context bookmark to the bookmark store
+   * @return {boolean} Value to cancel form submission
    */
-  saveBookmark() {
+  saveBookmark(): boolean {
     if (this.bookmarkForm.invalid) {
-      return;
+      return false;
     }
     if (this.bookmarkId) {
       this.updateBookmark();
     } else {
       this.addBookmark();
     }
+    return false;
   }
 
   /**
