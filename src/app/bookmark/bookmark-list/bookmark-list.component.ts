@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Page } from 'src/app/core/pagination/page.model';
+import { Bookmark } from '../shared/bookmark';
 import { BookmarkService } from '../shared/bookmark.service';
 
 @Component({
@@ -53,5 +54,15 @@ export class BookmarkListComponent {
    */
   updateSelectedBookmark(selectionChange: MatSelectionListChange) {
     this.bookmarkService.setSelectedBookmark(selectionChange.options[0].value);
+  }
+
+  /**
+   *Identifies uniquely a bookmark in the list
+   * @param {number} index The index of the bookmark
+   * @param {Bookmark} bookmark The bookmark to identify
+   * @return {string} the identifier of the bookmark
+   */
+  bookmarkIdentifier(index: number, bookmark: Bookmark): string {
+    return bookmark.id;
   }
 }
