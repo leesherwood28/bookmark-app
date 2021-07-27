@@ -19,7 +19,7 @@
 
       <mat-form-field>
         <mat-label>Url</mat-label>
-        <input matInput type="text" [formControl]="urlControl" />
+        <input matInput type="url" [formControl]="urlControl" />
         <mat-error *ngIf="urlControl | hasError: 'required'">
           The url is required
         </mat-error>
