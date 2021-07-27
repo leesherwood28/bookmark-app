@@ -1,7 +1,9 @@
 <form [formGroup]="bookmarkForm">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Edit Bookmark</mat-card-title>
+      <mat-card-title>
+        {{ bookmarkId === null ? 'Add Bookmark' : 'Edit Bookmark' }}
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
