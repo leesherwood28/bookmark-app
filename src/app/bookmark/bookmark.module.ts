@@ -15,6 +15,7 @@ import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
 import { BookmarkOverviewPageComponent } from './bookmark-overview-page/bookmark-overview-page.component';
 import { BookmarkOverviewComponent } from './bookmark-overview/bookmark-overview.component';
 import { BookmarkSavedPageComponent } from './bookmark-saved-page/bookmark-saved-page.component';
+import { StructModule } from '../shared/struct/struct.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BookmarkSavedPageComponent } from './bookmark-saved-page/bookmark-saved
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    StructModule,
   ],
 })
 export class BookmarkModule {}
