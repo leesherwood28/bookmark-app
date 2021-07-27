@@ -2,13 +2,10 @@
   <mat-card-header>
     <mat-card-title>Bookmarks</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content @fadeItemsDownOnEnter>
     <ng-container *ngIf="pagedBookmarks$ | async; let bookmarks">
       <ng-container *ngIf="bookmarks.totalRecords !== 0; else noBookmarksMessage">
-        <mat-list
-          @fadeItemsDownOnEnter
-          *appLet="selectedBookmarkId$ | async as selectedBookmarkId"
-        >
+        <mat-list *appLet="selectedBookmarkId$ | async as selectedBookmarkId">
           <ng-container
             *ngFor="
               let bookmark of bookmarks.pagedRecords;
