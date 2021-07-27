@@ -1,6 +1,9 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { isNil } from '../util/is-nil.fn';
 
+const URL_REGEXP =
+  /^[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
+
 /**
  * Writing custom validators
  */
@@ -47,5 +50,19 @@ export class CustomValidators {
       const isValid = control.value.length <= maxLength;
       return isValid ? null : { maxLength: { requiredLength: maxLength } };
     };
+  }
+
+  /**
+   * Validator to check the provided control value is
+   * a url
+   * @param {AbstractControl} control The control to check
+   * @return {ValidationErrors | null} The url validator
+   */
+  static url(control: AbstractControl): ValidationErrors | null {
+    // Dont validate that its required
+    if (!isNil(CustomValidators.required(control))) {
+      return null;
+    }
+    return URL_REGEXP.test(control.value) ? null : { url: false };
   }
 }

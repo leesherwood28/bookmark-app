@@ -115,7 +115,10 @@ export class BookmarkEditorComponent implements OnInit {
       CustomValidators.required,
       CustomValidators.maxLength(10),
     ]);
-    this.urlControl = new FormControl('', [CustomValidators.required]);
+    this.urlControl = new FormControl('', [
+      CustomValidators.required,
+      CustomValidators.url,
+    ]);
     this.bookmarkForm = new FormGroup({
       name: this.nameControl,
       url: this.urlControl,
