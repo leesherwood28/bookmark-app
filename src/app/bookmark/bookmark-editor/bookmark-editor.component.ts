@@ -64,16 +64,11 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
-   * Clears the form
+   * Clears the form and resets pristine status
    */
   clearForm() {
-    this.bookmarkForm.setValue(
-      {
-        name: '',
-        url: '',
-      },
-      { emitEvent: false }
-    );
+    this.setFormFieldsToEmptyValues();
+    this.bookmarkForm.markAsPristine();
   }
 
   /**
@@ -81,6 +76,19 @@ export class BookmarkEditorComponent implements OnInit {
    */
   cancelEdit() {
     this.bookmarkService.setSelectedBookmark(null);
+  }
+
+  /**
+   * Sets the form to empty values
+   */
+  private setFormFieldsToEmptyValues() {
+    this.bookmarkForm.setValue(
+      {
+        name: '',
+        url: '',
+      },
+      { emitEvent: false }
+    );
   }
 
   /**
@@ -126,21 +134,34 @@ export class BookmarkEditorComponent implements OnInit {
    */
   private displaySelectedBookmark(bookmark: Bookmark | undefined) {
     if (isNil(bookmark)) {
-      this.bookmarkId = null;
-      this.bookmarkForm.setValue({
-        name: '',
-        url: '',
-      });
+      this.resetFormToEmptyView();
     } else {
-      this.bookmarkForm.setValue(
-        {
-          name: bookmark.name,
-          url: bookmark.url,
-        },
-        { emitEvent: false }
-      );
-      this.bookmarkId = bookmark.id;
+      this.setFormForBookmark(bookmark);
     }
+  }
+
+  /**
+   * Sets the form for the provided bookmark
+   * @param {Bookmark} bookmark the bookmark to set the form for
+   */
+  private setFormForBookmark(bookmark: Bookmark) {
+    this.bookmarkForm.setValue(
+      {
+        name: bookmark.name,
+        url: bookmark.url,
+      },
+      { emitEvent: false }
+    );
+    this.bookmarkId = bookmark.id;
+    this.bookmarkForm.markAsPristine();
+  }
+
+  /**
+   * Resets the form back to empty addition
+   */
+  private resetFormToEmptyView() {
+    this.bookmarkId = null;
+    this.setFormFieldsToEmptyValues();
     this.bookmarkForm.markAsPristine();
   }
 }
