@@ -5,3 +5,7 @@ mat-card-content {
 mat-form-field {
   width: 100%;
 }
+
+mat-form-field:not(:last-child) {
+  margin-bottom: 1rem;
+}
