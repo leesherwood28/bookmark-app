@@ -100,6 +100,8 @@ export class BookmarkService {
   updateBookmark(bookmark: Bookmark) {
     const bookmarks = this.bookmarkStore.getState();
     const bookmarkToEditIndex = bookmarks.findIndex((b) => b.id === bookmark.id);
+    // If we dont find the bookmark, possibly because the user
+    // cleared their data, then just add it instead
     if (bookmarkToEditIndex === -1) {
       this.addBookmark(bookmark);
     }
