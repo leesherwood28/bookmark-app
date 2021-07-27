@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { BookmarkRoutingModule } from './bookmark-routing.module';
 import { BookmarkEditorComponent } from './bookmark-editor/bookmark-editor.component';
 import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
@@ -34,6 +35,7 @@ import { BookmarkSavedPageComponent } from './bookmark-saved-page/bookmark-saved
     MatListModule,
     MatDividerModule,
     MatPaginatorModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
   ],
