@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { Page } from 'src/app/core/pagination/page.model';
 import { PagedData } from 'src/app/core/pagination/paged-data.model';
 import { PaginationService } from 'src/app/core/pagination/pagination.service';
@@ -52,7 +52,8 @@ export class BookmarkService {
     ]).pipe(
       map(([bookmarks, selectedBookmarkId]) =>
         bookmarks.find((b) => b.id === selectedBookmarkId)
-      )
+      ),
+      distinctUntilChanged((prev, next) => prev?.id === next?.id)
     );
   }
 
