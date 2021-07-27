@@ -1,4 +1,4 @@
-<form [formGroup]="bookmarkForm">
+<form [formGroup]="bookmarkForm" (ngSubmit)="saveBookmark()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -28,10 +28,16 @@
     </mat-card-content>
     <mat-card-actions align="end">
       <button (click)="clearForm()" mat-button type="button">Clear</button>
-      <button (click)="cancelEdit()" *ngIf="bookmarkId" @bounceInOnEnter mat-button>
+      <button
+        (click)="cancelEdit()"
+        *ngIf="bookmarkId"
+        type="button"
+        @bounceInOnEnter
+        mat-button
+      >
         Cancel
       </button>
-      <button (click)="saveBookmark()" mat-raised-button color="primary">
+      <button type="submit" (click)="saveBookmark()" mat-raised-button color="primary">
         {{ bookmarkId === null ? 'Add' : 'Update' }}
       </button>
     </mat-card-actions>
