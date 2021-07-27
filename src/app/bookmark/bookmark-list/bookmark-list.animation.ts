@@ -1,10 +1,8 @@
 import {
   animate,
-  AnimationTriggerMetadata,
   AUTO_STYLE,
   query,
   stagger,
-  state,
   style,
   transition,
   trigger,
