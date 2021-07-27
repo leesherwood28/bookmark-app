@@ -1,8 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { isNil } from '../util/is-nil.fn';
 
-const URL_REGEXP =
-  /^[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
+const URL_REGEXP = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
 
 /**
  * Writing custom validators
@@ -63,6 +62,6 @@ export class CustomValidators {
     if (!isNil(CustomValidators.required(control))) {
       return null;
     }
-    return URL_REGEXP.test(control.value) ? null : { url: false };
+    return URL_REGEXP.test(control.value) ? null : { url: true };
   }
 }
