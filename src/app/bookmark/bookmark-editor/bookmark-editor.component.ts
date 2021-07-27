@@ -127,6 +127,10 @@ export class BookmarkEditorComponent implements OnInit {
   private displaySelectedBookmark(bookmark: Bookmark | undefined) {
     if (isNil(bookmark)) {
       this.bookmarkId = null;
+      this.bookmarkForm.setValue({
+        name: '',
+        url: '',
+      });
     } else {
       this.bookmarkForm.setValue(
         {
@@ -137,5 +141,6 @@ export class BookmarkEditorComponent implements OnInit {
       );
       this.bookmarkId = bookmark.id;
     }
+    this.bookmarkForm.markAsPristine();
   }
 }
