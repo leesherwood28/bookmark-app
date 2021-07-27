@@ -71,6 +71,16 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
+   * Deletes the forms bookmark in the global state
+   */
+  deleteBookmark() {
+    if (isNil(this.bookmarkId)) {
+      throw new Error('Attempting to delete bookmark with no id');
+    }
+    this.bookmarkService.deleteBookmark(this.bookmarkId);
+  }
+
+  /**
    * Clears the form
    */
   clearForm() {

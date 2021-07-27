@@ -107,4 +107,14 @@ export class BookmarkService {
     bookmarks[bookmarkToEditIndex] = bookmark;
     this.bookmarkStore.setState(bookmarks);
   }
+
+  /**
+   * Deletes the bookmark with the provided id
+   * @param {string} bookmarkId The bookmark to delete
+   */
+  deleteBookmark(bookmarkId: string) {
+    let bookmarks = this.bookmarkStore.getState();
+    bookmarks = bookmarks.filter((b) => b.id !== bookmarkId);
+    this.bookmarkStore.setState(bookmarks);
+  }
 }

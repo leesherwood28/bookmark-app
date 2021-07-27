@@ -27,6 +27,16 @@
       >
         Update
       </button>
+      <button
+        *ngIf="bookmarkId"
+        (click)="deleteBookmark()"
+        @bounceInOnEnter
+        @bounceOutOnLeave
+        mat-raised-button
+        color="warn"
+      >
+        Delete
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>
