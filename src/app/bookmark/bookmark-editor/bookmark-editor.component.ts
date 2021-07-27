@@ -11,6 +11,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { bounceInOnEnterAnimation } from 'angular-animations';
 import { markForCheck } from 'src/app/core/operators/mark-for-check.operator';
 import { isNil } from 'src/app/core/util/is-nil.fn';
+import { CustomValidators } from 'src/app/core/valdiators/validators';
 import { Bookmark } from '../shared/bookmark';
 import { BookmarkService } from '../shared/bookmark.service';
 
@@ -110,7 +111,10 @@ export class BookmarkEditorComponent implements OnInit {
    * Sets up the form
    */
   private setupForm() {
-    this.nameControl = new FormControl();
+    this.nameControl = new FormControl('', [
+      CustomValidators.required,
+      CustomValidators.maxLength(10),
+    ]);
     this.urlControl = new FormControl();
     this.bookmarkForm = new FormGroup({
       name: this.nameControl,

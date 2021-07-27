@@ -9,8 +9,11 @@
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput type="text" [formControl]="nameControl" />
-        <mat-error *ngIf="nameControl | hasError: 'maxLength'">
-          The name must be no more than characters
+        <mat-error *ngIf="nameControl | hasError: 'maxLength'; let error">
+          The name must be no more than {{ error.requiredLength }} characters
+        </mat-error>
+        <mat-error *ngIf="nameControl | hasError: 'required'">
+          The name is required
         </mat-error>
       </mat-form-field>
 
