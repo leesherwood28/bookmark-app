@@ -5,14 +5,14 @@ import { map, switchMap } from 'rxjs/operators';
 import { Page } from 'src/app/core/pagination/page.model';
 import { Bookmark } from '../shared/bookmark';
 import { BookmarkService } from '../shared/bookmark.service';
-import { fadeItemsOnEnter, fadeItemsOnLeave } from './bookmark-list.animation';
+import { fadeItemsOnEnter } from './bookmark-list.animation';
 
 @Component({
   selector: 'app-bookmark-list',
   templateUrl: './bookmark-list.component.html',
   styleUrls: ['./bookmark-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeItemsOnEnter, fadeItemsOnLeave],
+  animations: [fadeItemsOnEnter],
 })
 export class BookmarkListComponent {
   readonly pageSize = 5;

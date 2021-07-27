@@ -25,10 +25,3 @@ export const fadeItemsOnEnter = trigger('fadeItemsOnEnter', [
     ),
   ]),
 ]);
-
-/**
- * Fades items on leave
- */
-export const fadeItemsOnLeave = trigger('fadeItemsOnLeave', [
-  transition('* <=> *', [query(':leave', [animate('200ms', style({ opacity: 0 }))])]),
-]);

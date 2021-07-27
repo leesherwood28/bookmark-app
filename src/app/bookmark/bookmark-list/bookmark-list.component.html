@@ -7,7 +7,6 @@
       <ng-container *ngIf="bookmarks.totalRecords !== 0; else noBookmarksMessage">
         <mat-list
           [@fadeItemsOnEnter]="bookmarks.pagedRecords.length"
-          [@fadeItemsOnLeave]="bookmarks.pagedRecords.length"
           *appLet="selectedBookmarkId$ | async as selectedBookmarkId"
         >
           <ng-container
