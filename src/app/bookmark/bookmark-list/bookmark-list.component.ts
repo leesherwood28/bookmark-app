@@ -60,6 +60,14 @@ export class BookmarkListComponent {
   }
 
   /**
+   * Deletes the bookmark with the provided id
+   * @param {string} bookmarkId The id of the bookmark to delete
+   */
+  deleteBookmark(bookmarkId: string) {
+    this.bookmarkService.deleteBookmark(bookmarkId);
+  }
+
+  /**
    *Identifies uniquely a bookmark in the list
    * @param {number} index The index of the bookmark
    * @param {Bookmark} bookmark The bookmark to identify
