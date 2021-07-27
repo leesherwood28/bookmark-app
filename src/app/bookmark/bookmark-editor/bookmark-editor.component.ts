@@ -164,4 +164,12 @@ export class BookmarkEditorComponent implements OnInit {
     this.setFormFieldsToEmptyValues();
     this.bookmarkForm.markAsPristine();
   }
+
+  /**
+   * Returns the error state for the provided control
+   * and the provided error key
+   * @param {FormControl} control The control to check
+   * @param {string} error
+   */
+  private hasError(control: FormControl, error: string) {}
 }
