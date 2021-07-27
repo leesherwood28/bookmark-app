@@ -10,9 +10,10 @@ import {
   trigger,
 } from '@angular/animations';
 
-const animationTiming = '500000ms cubic-bezier(0.4,0.0,0.2,1)';
-
-export const animateList = trigger('animateList', [
+/**
+ * Fades items on enter
+ */
+export const fadeItemsOnEnter = trigger('fadeItemsOnEnter', [
   transition('* <=> *', [
     query(
       ':enter',
@@ -23,4 +24,11 @@ export const animateList = trigger('animateList', [
       { optional: true }
     ),
   ]),
+]);
+
+/**
+ * Fades items on leave
+ */
+export const fadeItemsOnLeave = trigger('fadeItemsOnLeave', [
+  transition('* <=> *', [query(':leave', [animate('200ms', style({ opacity: 0 }))])]),
 ]);
