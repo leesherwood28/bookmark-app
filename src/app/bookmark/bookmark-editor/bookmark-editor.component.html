@@ -23,6 +23,7 @@
         <mat-error *ngIf="urlControl | hasError: 'required'">
           The url is required
         </mat-error>
+        <mat-error *ngIf="urlControl | hasError: 'url'"> The url is not valid </mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions align="end">
