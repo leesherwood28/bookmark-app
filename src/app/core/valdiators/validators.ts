@@ -16,13 +16,36 @@ export class CustomValidators {
     return isInvalid ? { required: true } : null;
   }
 
+  /**
+   * Validator to check the control is more than the
+   * provided min length
+   * @param {number} minLength The min length to check for
+   * @return {ValidatorFn} The validator
+   */
   static minLength(minLength: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
+      // We dont validate that its required
       if (!isNil(CustomValidators.required(control))) {
         return null;
       }
       const isValid = control.value.length >= minLength;
-      return isValid ? null | {'minLength': true};
+      return isValid ? null : { minLength: true };
+    };
+  }
+
+  /**
+   * Validator to check the control is more than the
+   * provided max length
+   * @param {number} maxLength The max length to check for
+   * @return {ValidatorFn} The validator
+   */
+  static maxLength(maxLength: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!isNil(CustomValidators.required(control))) {
+        return null;
+      }
+      const isValid = control.value.length <= maxLength;
+      return isValid ? null : { minLength: true };
     };
   }
 }
