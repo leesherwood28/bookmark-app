@@ -17,7 +17,13 @@
             "
           >
             <mat-list-item [class.selected-bookmark]="selectedBookmarkId === bookmark.id">
-              <span>{{ bookmark.name }}</span>
+              <a
+                mat-button
+                color="primary"
+                [href]="'//' + bookmark.url"
+                target="_blank"
+                >{{ bookmark.name }}</a
+              >
               <span class="expander"></span>
               <button (click)="setSelectedBookmark(bookmark.id)" mat-icon-button>
                 <mat-icon>edit</mat-icon>
