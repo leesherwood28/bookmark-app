@@ -29,7 +29,7 @@ export class CustomValidators {
         return null;
       }
       const isValid = control.value.length >= minLength;
-      return isValid ? null : { minLength: true };
+      return isValid ? null : { minLength: { requiredLength: minLength } };
     };
   }
 
@@ -45,7 +45,7 @@ export class CustomValidators {
         return null;
       }
       const isValid = control.value.length <= maxLength;
-      return isValid ? null : { minLength: true };
+      return isValid ? null : { maxLength: { requiredLength: maxLength } };
     };
   }
 }
