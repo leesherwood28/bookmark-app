@@ -64,6 +64,26 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
+   * Clears the form
+   */
+  clearForm() {
+    this.bookmarkForm.setValue(
+      {
+        name: '',
+        url: '',
+      },
+      { emitEvent: false }
+    );
+  }
+
+  /**
+   * Cancels bookmark edit
+   */
+  cancelEdit() {
+    this.bookmarkService.setSelectedBookmark(null);
+  }
+
+  /**
    * Updates the forms bookmark in the global state
    */
   private updateBookmark() {
@@ -76,19 +96,6 @@ export class BookmarkEditorComponent implements OnInit {
       url: this.urlControl.value,
     });
     this.bookmarkUpdated.emit(this.bookmarkId);
-  }
-
-  /**
-   * Clears the form
-   */
-  clearForm() {
-    this.bookmarkForm.setValue(
-      {
-        name: '',
-        url: '',
-      },
-      { emitEvent: false }
-    );
   }
 
   /**
