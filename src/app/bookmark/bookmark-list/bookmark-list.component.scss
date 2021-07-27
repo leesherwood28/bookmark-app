@@ -1,3 +1,8 @@
+@use '~@angular/material' as mat;
+@use '/src/theme/dark-theme.scss';
+@use '/src/theme/light-theme.scss';
+@use 'sass:map';
+
 mat-card-content {
   position: relative;
 }
@@ -10,6 +15,18 @@ mat-list-item {
   flex-grow: 1;
 }
 
+mat-list-item {
+  transition: background ease-out 200ms, color ease-out 200ms;
+}
+
 .selected-bookmark {
-  background-color: rebeccapurple;
+  background-color: mat.get-color-from-palette(dark-theme.$dark-primary);
+  color: mat.get-color-from-palette(dark-theme.$dark-primary, default-contrast);
+}
+
+:host-context(.light-theme) {
+  .selected-bookmark {
+    background-color: mat.get-color-from-palette(light-theme.$light-primary);
+    color: mat.get-color-from-palette(light-theme.$light-primary, default-contrast);
+  }
 }
