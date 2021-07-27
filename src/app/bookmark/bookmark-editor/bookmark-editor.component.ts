@@ -1,14 +1,14 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  Output,
-  EventEmitter,
   ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { bounceInOnEnterAnimation, bounceOutOnLeaveAnimation } from 'angular-animations';
+import { bounceInOnEnterAnimation } from 'angular-animations';
 import { markForCheck } from 'src/app/core/operators/mark-for-check.operator';
 import { isNil } from 'src/app/core/util/is-nil.fn';
 import { Bookmark } from '../shared/bookmark';
@@ -20,7 +20,7 @@ import { BookmarkService } from '../shared/bookmark.service';
   templateUrl: './bookmark-editor.component.html',
   styleUrls: ['./bookmark-editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [bounceInOnEnterAnimation(), bounceOutOnLeaveAnimation()],
+  animations: [bounceInOnEnterAnimation()],
 })
 export class BookmarkEditorComponent implements OnInit {
   bookmarkForm!: FormGroup;
@@ -39,12 +39,23 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
-   * Adds the forms bookmark to the global state
+   * Saves the context bookmark to the bookmark store
    */
-  addBookmark() {
+  saveBookmark() {
     if (this.bookmarkForm.invalid) {
       return;
     }
+    if (this.bookmarkId) {
+      this.updateBookmark();
+    } else {
+      this.addBookmark();
+    }
+  }
+
+  /**
+   * Adds the forms bookmark to the global state
+   */
+  private addBookmark() {
     const newBookmarkId = this.bookmarkService.addBookmark({
       name: this.nameControl.value,
       url: this.urlControl.value,
@@ -55,10 +66,7 @@ export class BookmarkEditorComponent implements OnInit {
   /**
    * Updates the forms bookmark in the global state
    */
-  updateBookmark() {
-    if (this.bookmarkForm.invalid) {
-      return;
-    }
+  private updateBookmark() {
     if (isNil(this.bookmarkId)) {
       throw new Error('Attempting to update bookmark with no id');
     }
@@ -68,16 +76,6 @@ export class BookmarkEditorComponent implements OnInit {
       url: this.urlControl.value,
     });
     this.bookmarkUpdated.emit(this.bookmarkId);
-  }
-
-  /**
-   * Deletes the forms bookmark in the global state
-   */
-  deleteBookmark() {
-    if (isNil(this.bookmarkId)) {
-      throw new Error('Attempting to delete bookmark with no id');
-    }
-    this.bookmarkService.deleteBookmark(this.bookmarkId);
   }
 
   /**
