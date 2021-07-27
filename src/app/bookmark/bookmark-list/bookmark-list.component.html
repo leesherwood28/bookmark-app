@@ -16,7 +16,7 @@
             <mat-list-item>
               <span>{{ bookmark.name }}</span>
               <span class="expander"></span>
-              <button mat-icon-button>
+              <button (click)="setSelectedBookmark(bookmark.id)" mat-icon-button>
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button>

@@ -33,6 +33,8 @@ export class BookmarkListComponent {
     switchMap((page) => this.bookmarkService.selectPagedBookmarks(page))
   );
 
+  readonly selectedBookmarkId$ = this.bookmarkService.selectSelectedBookmark();
+
   constructor(private bookmarkService: BookmarkService) {}
 
   /**
@@ -48,12 +50,11 @@ export class BookmarkListComponent {
   }
 
   /**
-   * Updates the selected bookmark from the provided
-   * selection change
-   * @param {MatSelectionListChange} selectionChange the selection change
+   * Updates the selected bookmark with the provided bookmark id
+   * @param {string} bookmarkId The bookmark to select
    */
-  updateSelectedBookmark(selectionChange: MatSelectionListChange) {
-    this.bookmarkService.setSelectedBookmark(selectionChange.options[0].value);
+  setSelectedBookmark(bookmarkId: string) {
+    this.bookmarkService.setSelectedBookmark(bookmarkId);
   }
 
   /**
