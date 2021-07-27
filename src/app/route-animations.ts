@@ -1,4 +1,12 @@
-import { animate, group, query, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 function translate(direction: 'left' | 'right', amount: number) {
   const translation = direction === 'left' ? -1 * amount : amount;
@@ -33,6 +41,7 @@ function slideTo(direction: 'left' | 'right') {
         }
       ),
     ]),
+    query('@*', animateChild()),
   ];
 }
 
