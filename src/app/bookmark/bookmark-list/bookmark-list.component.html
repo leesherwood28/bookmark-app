@@ -4,18 +4,18 @@
   </mat-card-header>
   <mat-card-content>
     <ng-container *ngIf="pagedBookmarks$ | async; let bookmarks">
-      <ng-container
-        *ngIf="
-          bookmarks.totalRecords !== 0;
-          else noBookmarksMessage;
-          trackBy: bookmarkIdentifier
-        "
-      >
+      <ng-container *ngIf="bookmarks.totalRecords !== 0; else noBookmarksMessage">
         <mat-selection-list
           [multiple]="false"
           (selectionChange)="updateSelectedBookmark($event)"
         >
-          <ng-container *ngFor="let bookmark of bookmarks.pagedRecords; let last = last">
+          <ng-container
+            *ngFor="
+              let bookmark of bookmarks.pagedRecords;
+              let last = last;
+              trackBy: bookmarkIdentifier
+            "
+          >
             <mat-list-option [value]="bookmark.id">
               <div mat-line>{{ bookmark.name }}</div>
             </mat-list-option>
