@@ -12,11 +12,16 @@ import { BookmarkSavedPageQueryParmas } from '../bookmark-saved-page/bookmark-sa
 export class BookmarkOverviewPageComponent {
   constructor(private router: Router) {}
 
+  /**
+   * On bookmark save, navigates to the confirmation screen
+   * @param {SaveType} saveType The type of save that was performed
+   * @param {string} bookmarkId The id of the bookmark
+   */
   navigateBookmarkSavedPage(saveType: SaveType, bookmarkId: string) {
     const params: BookmarkSavedPageQueryParmas = {
       bookmarkId,
       type: saveType,
     };
-    // this.router.navigate(['/success'], { queryParams: params });
+    this.router.navigate(['/success'], { queryParams: params });
   }
 }
