@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatSelectionListChange } from '@angular/material/list';
 import { PageEvent } from '@angular/material/paginator';
 import { BehaviorSubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Page } from 'src/app/core/pagination/page.model';
 import { Bookmark } from '../shared/bookmark';
 import { BookmarkService } from '../shared/bookmark.service';
@@ -33,7 +33,9 @@ export class BookmarkListComponent {
     switchMap((page) => this.bookmarkService.selectPagedBookmarks(page))
   );
 
-  readonly selectedBookmarkId$ = this.bookmarkService.selectSelectedBookmark();
+  readonly selectedBookmarkId$ = this.bookmarkService
+    .selectSelectedBookmark()
+    .pipe(map((b) => b?.id));
 
   constructor(private bookmarkService: BookmarkService) {}
 
