@@ -41,7 +41,7 @@ function slideTo(direction: 'left' | 'right') {
         }
       ),
     ]),
-    query('@*', animateChild()),
+    query('@*', animateChild(), { optional: true }),
   ];
 }
 
