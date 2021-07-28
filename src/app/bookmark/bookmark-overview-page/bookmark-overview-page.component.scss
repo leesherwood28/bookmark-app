@@ -2,8 +2,9 @@
 
 :host {
   display: flex;
-  align-items: flex-start;
-  padding: 0 10%;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 20vw;
   & > * {
     margin: 1rem;
     flex: 1 1 0;
@@ -15,7 +16,6 @@ app-bookmark-list {
 }
 @include screen.screen-width-small {
   :host {
-    flex-direction: column;
-    align-items: stretch;
+    padding: 0;
   }
 }
