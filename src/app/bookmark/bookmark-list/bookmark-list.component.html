@@ -19,7 +19,7 @@
             <mat-list-item [class.selected-bookmark]="selectedBookmarkId === bookmark.id">
               <a
                 mat-button
-                color="primary"
+                class="link"
                 [href]="bookmark.url | includeProtocol"
                 target="_blank"
                 >{{ bookmark.name }}</a
