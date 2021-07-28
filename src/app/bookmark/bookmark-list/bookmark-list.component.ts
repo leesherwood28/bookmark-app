@@ -15,7 +15,7 @@ import { fadeItemsOnEnter } from './bookmark-list.animation';
   animations: [fadeItemsOnEnter],
 })
 export class BookmarkListComponent {
-  readonly pageSize = 4;
+  readonly pageSize = 20;
 
   readonly initalPage: Page = {
     pageIndex: 0,
