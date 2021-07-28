@@ -14,7 +14,9 @@ import { BookmarkSavedPageQueryParmas } from './bookmark-saved-page-query-params
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookmarkSavedPageComponent implements OnInit {
+  /** Indicates the save type thats being displayed */
   saveType!: SaveType;
+  /** Indicates the saved bookmark */
   savedBookmark$!: Observable<Bookmark | undefined>;
 
   constructor(private route: ActivatedRoute, private bookmarkService: BookmarkService) {}

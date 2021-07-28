@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Page } from './page.model';
 import { PagedData } from './paged-data.model';
 
+/**
+ * Service can be used for pagination purposes
+ */
 @Injectable({
   providedIn: 'root',
 })

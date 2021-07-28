@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+/**
+ * Abstract implementation of a storage provider,
+ * allowing us to swap one storage provider out for another
+ */
 @Injectable()
 export abstract class PersistStorageProviderService {
   /**

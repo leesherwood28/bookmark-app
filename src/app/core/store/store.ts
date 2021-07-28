@@ -2,6 +2,11 @@ import { BehaviorSubject, Observable, SubscriptionLike } from 'rxjs';
 import { isNil } from '../util/is-nil.fn';
 import { StoreOptions } from './store-options';
 
+/**
+ * Generic store to store state. Store works standalone without
+ * persistence but can be also provided with persistence to allow
+ * for persistence of data across sessions
+ */
 export class Store<T> {
   private storedState$!: BehaviorSubject<T>;
   private foreignDataSub!: SubscriptionLike;
