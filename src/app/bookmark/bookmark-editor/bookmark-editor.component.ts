@@ -69,11 +69,11 @@ export class BookmarkEditorComponent implements OnInit {
   }
 
   /**
-   * Clears the form and resets pristine status
+   * Clears the form and resets touched status
    */
   clearForm() {
     this.setFormFieldsToEmptyValues();
-    this.bookmarkForm.markAsPristine();
+    this.bookmarkForm.markAsUntouched();
   }
 
   /**
@@ -164,7 +164,7 @@ export class BookmarkEditorComponent implements OnInit {
       { emitEvent: false }
     );
     this.bookmarkId = bookmark.id;
-    this.bookmarkForm.markAsPristine();
+    this.bookmarkForm.markAsUntouched();
   }
 
   /**
@@ -173,6 +173,6 @@ export class BookmarkEditorComponent implements OnInit {
   private resetFormToEmptyView() {
     this.bookmarkId = null;
     this.setFormFieldsToEmptyValues();
-    this.bookmarkForm.markAsPristine();
+    this.bookmarkForm.markAsUntouched();
   }
 }
