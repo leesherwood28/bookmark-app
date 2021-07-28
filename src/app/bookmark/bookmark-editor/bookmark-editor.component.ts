@@ -91,13 +91,10 @@ export class BookmarkEditorComponent implements OnInit {
    * Sets the form to empty values
    */
   private setFormFieldsToEmptyValues() {
-    this.bookmarkForm.setValue(
-      {
-        name: '',
-        url: '',
-      },
-      { emitEvent: false }
-    );
+    this.bookmarkForm.setValue({
+      name: '',
+      url: '',
+    });
   }
 
   /**
@@ -161,14 +158,11 @@ export class BookmarkEditorComponent implements OnInit {
    * @param {Bookmark} bookmark the bookmark to set the form for
    */
   private setFormForBookmark(bookmark: Bookmark) {
-    this.bookmarkForm.setValue(
-      {
-        name: bookmark.name,
-        url: bookmark.url,
-      },
-      { emitEvent: false }
-    );
     this.bookmarkId = bookmark.id;
+    this.bookmarkForm.setValue({
+      name: bookmark.name,
+      url: bookmark.url,
+    });
     this.bookmarkForm.markAsUntouched();
   }
 
