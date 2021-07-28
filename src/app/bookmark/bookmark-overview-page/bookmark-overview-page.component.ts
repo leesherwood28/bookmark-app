@@ -56,7 +56,7 @@ export class BookmarkOverviewPageComponent implements OnInit {
         filter((b) => !isNil(b))
       )
       .subscribe(() =>
-        this.editorComponent.nativeElement.scrollIntoView({
+        this.editorComponent?.nativeElement?.scrollIntoView({
           behavior: 'smooth',
           block: 'end',
           inline: 'nearest',
