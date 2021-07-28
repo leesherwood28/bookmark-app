@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+/**
+ * Pipe allows us to evaluate the errors on
+ * the provided form control
+ */
 @Pipe({
   name: 'hasError',
   pure: false,
