@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -45,6 +46,7 @@ export class BookmarkEditorComponent implements OnInit {
    */
   saveBookmark(): boolean {
     if (this.bookmarkForm.invalid) {
+      this.bookmarkForm.markAllAsTouched();
       return false;
     }
     if (this.bookmarkId) {
