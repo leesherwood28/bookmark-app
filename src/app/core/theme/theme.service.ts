@@ -1,5 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PersistStorageProviderService } from '../store/persist-storage-provider.service';
 import { Store } from '../store/store';
 import { Theme } from './theme.type';
