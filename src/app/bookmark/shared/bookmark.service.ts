@@ -118,4 +118,12 @@ export class BookmarkService {
     bookmarks = bookmarks.filter((b) => b.id !== bookmarkId);
     this.bookmarkStore.setState(bookmarks);
   }
+
+  /**
+   * Gets the bookmarks
+   * @return {Bookmark[]} The bookmarks
+   */
+  getBookmarks(): Bookmark[] {
+    return this.bookmarkStore.getState();
+  }
 }

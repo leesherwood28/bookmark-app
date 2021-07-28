@@ -6,7 +6,12 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+} from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { bounceInOnEnterAnimation } from 'angular-animations';
 import { markForCheck } from 'src/app/core/operators/mark-for-check.operator';
@@ -117,6 +122,7 @@ export class BookmarkEditorComponent implements OnInit {
     this.nameControl = new FormControl('', [
       CustomValidators.required,
       CustomValidators.maxLength(10),
+      (c) => this.nameTakenValidator(c),
     ]);
     this.urlControl = new FormControl('', [
       CustomValidators.required,
@@ -173,5 +179,18 @@ export class BookmarkEditorComponent implements OnInit {
     this.bookmarkId = null;
     this.setFormFieldsToEmptyValues();
     this.bookmarkForm.markAsUntouched();
+  }
+
+  /**
+   * Validates that the bookmark name is not
+   * already taken
+   * @param {AbstractControl} control The name control to validate
+   * @return {ValidationErrors | null} The validation erros
+   */
+  private nameTakenValidator(control: AbstractControl): ValidationErrors | null {
+    const bookmarks = this.bookmarkService.getBookmarks();
+    const matchingBookmark = bookmarks.find((b) => b.name === control.value);
+    const isValid = isNil(matchingBookmark) || matchingBookmark.id === this.bookmarkId;
+    return isValid ? null : { nameTaken: true };
   }
 }
