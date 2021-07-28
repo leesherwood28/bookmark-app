@@ -17,7 +17,7 @@ export const fadeItemsOnEnter = trigger('fadeItemsOnEnter', [
       ':enter',
       [
         style({ opacity: 0 }),
-        stagger('50ms', animate('600ms ease-out', style({ opacity: AUTO_STYLE }))),
+        stagger('40ms', animate('600ms ease-out', style({ opacity: AUTO_STYLE }))),
       ],
       { optional: true }
     ),
