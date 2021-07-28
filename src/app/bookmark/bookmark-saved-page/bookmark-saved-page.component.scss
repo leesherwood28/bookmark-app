@@ -1,3 +1,4 @@
+@use '/src/theme/screen.scss';
 :host {
   display: flex;
   align-items: center;
@@ -8,4 +9,11 @@
 mat-card {
   width: 40vw;
   max-width: 600px;
+}
+
+@include screen.screen-width-small {
+  mat-card {
+    width: 100%;
+    max-width: inherit;
+  }
 }
